@@ -1,4 +1,0 @@
-2026-02-04 13:25:53,105 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
-2026-02-04 13:25:53,609 - INFO - Identity Verified | Account: ********5818 | ARN: arn:aws:iam::********5818:user/terraform-local
-2026-02-04 13:25:53,637 - INFO - Starting S3 bucket list request...
-2026-02-04 13:25:54,038 - INFO - Found bucket: terragrunt-ecs-state

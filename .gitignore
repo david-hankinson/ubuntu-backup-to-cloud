@@ -1,3 +1,7 @@
+# Logs
+*.log
+ubuntu-backup-to-s3.log*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
