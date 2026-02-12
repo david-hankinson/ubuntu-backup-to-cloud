@@ -1,0 +1,8 @@
+2026-02-11 17:48:05,207 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2026-02-11 17:48:06,357 - INFO - Identity Verified | Account: ********5818 | ARN: arn:aws:iam::********5818:user/terraform-local
+2026-02-11 17:48:06,390 - INFO - Starting S3 bucket list request...
+2026-02-11 17:48:07,113 - INFO - Found bucket: terragrunt-ecs-state
+2026-02-11 17:54:49,318 [INFO] [botocore.credentials:1392] - Found credentials in shared credentials file: ~/.aws/credentials
+2026-02-11 17:54:50,355 [INFO] [root:20] - Identity Verified | Account: ********5818 | ARN: arn:aws:iam::********5818:user/terraform-local
+2026-02-11 17:54:50,381 [INFO] [root:31] - Starting S3 bucket list request...
+2026-02-11 17:54:51,089 [INFO] [root:38] - Found bucket: terragrunt-ecs-state
