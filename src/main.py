@@ -1,34 +1,38 @@
 #!/usr/bin/env python3
-from pathlib import Path
-
 import boto3
 import logger_config
 import disk_utils
 from aws_utils import verify_and_log_aws_identity, list_my_buckets
-from backup_to_s3 import ensure_secure_bucket
+# Import the backup function
+from backup_to_s3 import ensure_secure_bucket, backup_to_s3 
 
 def main():
-    # Initialize the logger
+    # 1. Initialize the logger
     logger_config.setup_logging()
     
-    # Run the identity check
-    if verify_and_log_aws_identity():
-        # Only list buckets if identity is verified
-        list_my_buckets()
+    # 2. Run the identity check
+    verify_and_log_aws_identity()
+        # list_my_buckets()
     
-    # Check size of home folder
+    # 3. Check size of home folder
     home = disk_utils.get_home_path()
     total_bytes = disk_utils.get_dir_size(home)
-    print(f"Total space used in {home}: {total_bytes / (1024**3):.2f} GB")
+    # Using your existing format_size utility for a prettier output
+    print(f"Total space used in {home}: {disk_utils.format_size(total_bytes)}")
 
-    # Define your bucket name
-    bucket_name = "REDACTED"
+    # 4. Define your bucket name
+    bucket_name = "ubuntu-cloud-backup-bucket"
     
-    # 2. Initialize the Boto3 client
-    # This uses the AWS credentials configured on your machine
+    # 5. Initialize the Boto3 client
     s3_client = boto3.client('s3')
 
+    # 6. Ensure bucket exists and is private
     ensure_secure_bucket(s3_client, bucket_name)
+
+    # 7. RUN THE BACKUP
+    print(f"\n--- Starting Backup to S3: {bucket_name} ---")
+    backup_to_s3(s3_client, bucket_name, home)
+    print("\n--- Backup Complete ---")
 
 if __name__ == "__main__":
     main()
