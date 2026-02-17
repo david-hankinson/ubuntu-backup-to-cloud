@@ -4,7 +4,7 @@ from pathlib import Path
 def get_home_path():
     return str(Path.home())
 
-EXCLUDE_DIRS = {'.cache', '.local', '.venv', '.git', 'node_modules'}
+EXCLUDE_DIRS = {'.cache', '.local', '.venv', '.git', 'node_modules', 'Downloads', 'anaconda3', 'anaconda_projects'}
 
 def get_dir_size(path):
     total = 0
